@@ -7,8 +7,26 @@
                 <ul class="menu__list">
                     <li><router-link :to="'/'" class="menu__link menu__active">Home</router-link></li>
                     <li><router-link :to="'/pricing'" href="#" class="menu__link">Pricing</router-link></li>
-                    <li><a href="#" class="menu__button">Choose pricing plan </a></li>
+                    <li><router-link :to="'/pricing'" href="#" class="menu__link">Profile <img src="../assets/profile-header.svg" alt=""></router-link></li>
                 </ul>
+                <div class="header-burger">
+                     <template>
+                        <Slide right>
+                        <a class="header__logo" href="#">
+                            <img src="../assets/logo_black.png" alt="logo">
+                        </a>
+                        <a id="home" class="header-burger__active" href="#">
+                            <span>Home</span>
+                        </a>
+                        <a id="pricing" href="#">
+                            <span>Pricing</span>
+                        </a>
+                         <a id="pricing" href="#">
+                            <span>Profile</span>
+                        </a>
+                        </Slide>
+                    </template>
+                </div>
             </nav>
         </div>
         <div class="header__note">
@@ -27,6 +45,9 @@
                         <h4>Neuroplaticity of the brain</h4>
                         <p>Research has shown over and over “name” produces real results</p>
                     </div>
+                    <div class="card-course__read">
+                        <a href="#">Read more</a>
+                    </div>
                 </div>
                 <div class="course__card card-course">
                     <div class="card-course__img">
@@ -35,6 +56,9 @@
                     <div class="card-course__about">
                         <h4>Eye tracking and focus</h4>
                         <p>Read our case studies to see how “name” drives success in classrooms nationwide </p>
+                    </div>
+                    <div class="card-course__read">
+                        <a href="#">Read more</a>
                     </div>
                 </div>
                 <div class="course__card card-course">
@@ -45,6 +69,9 @@
                         <h4>Teaching strategies </h4>
                         <p>The Elite 100 share why they turn to “name” to help their students grow</p>
                     </div>
+                    <div class="card-course__read">
+                        <a href="#">Read more</a>
+                    </div>
                 </div>
                 <div class="course__card card-course">
                     <div class="card-course__img">
@@ -54,6 +81,9 @@
                         <h4>Full body full brain movement</h4>
                         <p>Walk into the classroom every dau, and understand exactly what students know and precisely what to do next to help them improve</p>
                     </div>
+                    <div class="card-course__read">
+                        <a href="#">Read more</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,14 +92,18 @@
 </template>
 
 <script>
+import { Slide } from 'vue-burger-menu' 
 export default {
-  
+   components: {
+        Slide // Register your component
+    }
 }
 </script>
 
 <style  lang="scss" scoped>
 
 // ************************* HEADER SECTION ***************************
+
 
   .header {
         background: url(../assets/bg.png) no-repeat;
@@ -93,7 +127,7 @@ export default {
 		&__menu {
             display: flex;
             justify-content: space-between;
-            padding: 19px 0px;
+            padding: 10px 0px;
              @media screen and (max-width: 1200px){
                  padding: 10px 0px;
              }
@@ -103,6 +137,7 @@ export default {
 		// .header__logo
 
 		&__logo {
+            margin-top: 10px;
             img{
                  @media screen and (max-width: 1200px){
                     width: 55px;
@@ -166,11 +201,19 @@ export default {
 
 		&__link {
             font-size: 20px;
-            margin: 0px 26px;
+            margin: 0px 0px 0px 45px;
             line-height: 30px;
             color: #fff;
+            display: flex;
+            align-items: center;            
             &:hover{
                 color: #f9ca24;
+            }
+            img{
+                margin-left: 20px;
+                @media screen and (max-width: 1140px){
+                    max-width: 30px;
+                }
             }
              @media screen and (max-width: 1440px){
                  font-size: 16px;
@@ -235,6 +278,8 @@ export default {
      }
 }
 
+
+
 // *********************** HEADER SECTION END *************************
 
 // COURSES SECTION
@@ -242,7 +287,7 @@ export default {
 .courses {
         position: absolute;
         left: 50%;
-        bottom: 0px;
+        bottom: -10px;
         width: 100%;
         transform: translate(-50%, 83%);
         display: flex;
@@ -272,9 +317,34 @@ export default {
             background: #FFFFFF;
             box-shadow: 0px 4px 14px rgba(19, 15, 64, 0.4);
             border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
 		}
 }
 .card-course {
+        // card-course__read
+        &__read{
+            flex: 0 0 auto;
+            margin-bottom: 25px;
+             a{
+                 background: #F6EF25;
+                border-radius: 50px;
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+                text-decoration: none;
+                padding: 8px 10px;
+                color: #232323;
+                width: 76%;
+                display: inline-block;
+                &:hover{
+                    background: #fff71c;
+                    transition: 0.3s;
+                }
+            }
+        }
 
 		// .card-course__img
 
@@ -288,7 +358,8 @@ export default {
 		// .card-course__about
 
 		&__about {
-            padding:32px 15px 15px;
+            flex: 1 0 auto;
+            padding:32px 15px 5px;
             @media screen and (max-width: 1140px){
                 padding: 4px 10px 15px;
             }
@@ -324,6 +395,7 @@ export default {
                       line-height: 13px;
                   }
             }
+           
 		}
 }
 
