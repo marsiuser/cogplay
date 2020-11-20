@@ -5,16 +5,37 @@
                 <ul class="menu__list">
                     <li><router-link :to="'/'" class="menu__link">Home</router-link></li>
                     <li><router-link :to="'/pricing'" href="#" class="menu__link menu__active">Pricing</router-link></li>
-                    <li><a href="#" class="menu__button">Choose pricing plan </a></li>
+                    <li><router-link :to="'/pricing'" href="#" class="menu__link">Log in / <span> Sign up</span> <img src="../assets/profile-header.svg" alt="sign up"></router-link></li>
                 </ul>
+                 <div class="header-burger">
+                     <template>
+                        <Slide right>
+                            <a class="header__logo" href="#">
+                                <img src="../assets/logo_black.png" alt="logo">
+                            </a>
+                            <a id="home" class="header-burger__active" href="#">
+                                <span>Home</span>
+                            </a>
+                            <a id="pricing" href="#">
+                                <span>Pricing</span>
+                            </a>
+                            <a id="pricing" href="#">
+                                <span>Profile</span>
+                            </a>
+                        </Slide>
+                    </template>
+                </div>
             </nav>
        </div>
   </div>
 </template>
 
 <script>
+import { Slide } from 'vue-burger-menu' 
 export default {
-    
+   components: {
+        Slide 
+    }
 }
 </script>
 
@@ -22,6 +43,9 @@ export default {
     .pricinghd {
         background: #F6EF25;
         padding: 15px 0px;
+        @media screen and (max-width: 568px){
+            padding: 30px 0px;
+        }
 		// ._container
 		&_container {
 		}
@@ -33,7 +57,15 @@ export default {
              a{
                 color: #000;
                 text-decoration: none;
-                font-size: 14px;
+                font-size: 20px;
+                @media screen and (max-width: 1560px){
+                    font-size: 16px;
+                }
+                img{
+                      @media screen and (max-width: 1560px){
+                        width: 35px;
+                    }
+                }
             }
 		}
 
@@ -42,9 +74,12 @@ export default {
 		&__list {
             display: flex;
             justify-content: space-between;
-            max-width: 350px;
+            max-width: 450px;
             margin-left: auto;
             align-items: center;
+            @media screen and (max-width: 1560px){
+                max-width: 380px;
+            }
              @media screen and (max-width: 568px){
                  justify-content: flex-end;
              }
@@ -53,6 +88,14 @@ export default {
 		// .menu__link
 
 		&__link {
+            display: flex;
+            align-items: center;
+            span{
+                color: red;
+            }
+            img{
+                margin-left: 20px;
+            }
              @media screen and (max-width: 568px){
                  margin-left: 40px;
              }
@@ -81,6 +124,12 @@ export default {
                 display: none;
             }
 		}
+}
+
+@media screen and (max-width: 568px){
+    .menu__list{
+        display: none;
+    }
 }
 
 </style>

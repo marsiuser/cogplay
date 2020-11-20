@@ -12,18 +12,18 @@
                 <div class="header-burger">
                      <template>
                         <Slide right>
-                        <a class="header__logo" href="#">
-                            <img src="../assets/logo_black.png" alt="logo">
-                        </a>
-                        <a id="home" class="header-burger__active" href="#">
-                            <span>Home</span>
-                        </a>
-                        <a id="pricing" href="#">
-                            <span>Pricing</span>
-                        </a>
-                         <a id="pricing" href="#">
-                            <span>Profile</span>
-                        </a>
+                            <a class="header__logo" href="#">
+                                <img src="../assets/logo_black.png" alt="logo">
+                            </a>
+                            <a id="home" class="header-burger__active" href="#">
+                                <span>Home</span>
+                            </a>
+                            <a id="pricing" href="#">
+                                <span>Pricing</span>
+                            </a>
+                            <a id="pricing" href="#">
+                                <span>Profile</span>
+                            </a>
                         </Slide>
                     </template>
                 </div>

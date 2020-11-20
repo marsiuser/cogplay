@@ -7,6 +7,7 @@
 
 <script>
 import Footer from "./components/Footer.vue";
+import 'material-icons/iconfont/material-icons.css';
 export default {
   name: 'App',
   components: {
@@ -22,6 +23,39 @@ export default {
  font-family: 'Poppins', sans-serif;
 }
 
+.vs-popup-primary .vs-popup--background{
+    background: rgba(35, 35, 35, 0.7) !important;
+    backdrop-filter: blur(19px) !important;
+}
+
+.vs-component .vs-popup--header{
+    display: none;
+}
+
+.con-vs-popup .vs-popup{
+  position: relative;
+}
+
+.con-vs-popup .vs-popup::before{
+  content: "";
+  position: absolute;
+  top: -55px;
+  right: 0px;
+  background: url(assets/Pricing/close-payment.svg) no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.vs-popup--content{
+  width: 100% !important;
+}
+.con-vs-popup .vs-popup{
+  border-radius: 10px !important;
+}
+.vs-component .vs-popup--content{
+  padding: 0px;
+  margin: 0px;
+}
 body.bm-overlay .bm-menu {
       width: 100% !important;
       background-color: #fff !important;
