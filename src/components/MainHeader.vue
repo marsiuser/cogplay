@@ -7,7 +7,7 @@
                 <ul class="menu__list">
                     <li><router-link :to="'/'" class="menu__link menu__active">Home</router-link></li>
                     <li><router-link :to="'/pricing'" href="#" class="menu__link">Pricing</router-link></li>
-                    <li><router-link :to="'/pricing'" href="#" class="menu__link">Profile <img src="../assets/profile-header.svg" alt=""></router-link></li>
+                    <li><router-link :to="'/profile'" href="#" class="menu__link">Profile <img src="../assets/profile-header.svg" alt=""></router-link></li>
                 </ul>
                 <div class="header-burger">
                      <template>
@@ -211,11 +211,14 @@ export default {
             }
             img{
                 margin-left: 20px;
+                  @media screen and (max-width: 1600px){
+                      width: 35px;
+                  }
                 @media screen and (max-width: 1140px){
                     max-width: 30px;
                 }
             }
-             @media screen and (max-width: 1440px){
+             @media screen and (max-width: 1600px){
                  font-size: 16px;
                  margin: 0px 16px;
              }
@@ -268,7 +271,7 @@ export default {
     color: #FFFFFF;
     letter-spacing: -2px;
     @media screen and (max-width: 1440px){
-        font-size: 90px;
+        font-size: 80px;
     }
     @media screen and (max-width: 1200px){
         font-size: 70px;

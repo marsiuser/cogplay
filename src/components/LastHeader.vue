@@ -4,8 +4,8 @@
             <nav class="menu__body">
                 <ul class="menu__list">
                     <li><router-link :to="'/'" class="menu__link">Home</router-link></li>
-                    <li><router-link :to="'/pricing'" class="menu__link menu__active">Pricing</router-link></li>
-                    <li><router-link :to="'/registration'"  class="menu__link">Log in / <span> Sign up</span> <img src="../assets/profile-header.svg" alt="sign up"></router-link></li>
+                    <li><router-link :to="'/pricing'" href="#" class="menu__link">Pricing</router-link></li>
+                   <li><router-link :to="'/profile'" href="#" class="menu__link menu__active">Profile <img src="../assets/profile-header.svg" alt=""></router-link></li>
                 </ul>
                  <div class="header-burger">
                      <template>
@@ -78,7 +78,7 @@ export default {
 		&__list {
             display: flex;
             justify-content: space-between;
-            max-width: 450px;
+            max-width: 410px;
             margin-left: auto;
             align-items: center;
             @media screen and (max-width: 1560px){

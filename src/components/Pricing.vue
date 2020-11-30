@@ -1,5 +1,6 @@
 <template>  
-    <div class="pricing">
+    <div class="prices">
+        <div class="pricing">
         <PricingHeader />
         <div class="pricing_title-block">
             <div class="_container"> 
@@ -120,34 +121,81 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="price_card-button">Become a member</button>
+                          <div class="price_card-button">
+                                <vs-button @click="popupActivo=true" >Become a member</vs-button>
+                                <vs-popup class="holamundo"  :active.sync="popupActivo">
+                                    <div class="payment-header"></div>
+                                    <div class="payment-body">
+                                        <h5>Payment Info</h5>
+                                        <form action="#" name="payment-form" id="payment" class="payment-form">
+                                            <label for="card-number">Card Number</label>
+                                            <input type="text" id="card-number">
+                                            <div class="payment-wrapper">
+                                                <div class="payment-input">
+                                                     <label for="expiry-date">Expiry Date</label>
+                                                      <input type="text" id="expiry-date">
+                                                </div>
+                                                <div class="payment-input">
+                                                     <label for="secure-code">Secure Code</label>
+                                                      <input type="text" id="secure-code">
+                                                </div>
+                                            </div>
+                                             <label for="cardholder-name">Cardholder Name</label>
+                                            <input type="text" id="cardholder-name">
+                                        </form>
+                                        <h5>Order Summary</h5>
+                                        <div class="payment-summary">
+                                            <div class="payment-summary__line">
+                                                <h6>Plan</h6>
+                                                <p>Parents with 1 child</p>
+                                            </div>
+                                            <div class="payment-summary__line">
+                                                <h6>Program</h6>
+                                                <p>Math</p>
+                                            </div>
+                                            <div class="payment-summary__line">
+                                                <h6>Time</h6>
+                                                <p>Month</p>
+                                            </div>
+                                             <div class="payment-summary__line payment-summary__total">
+                                                <h6>Total</h6>
+                                                <p>$49</p>
+                                            </div>
+                                        </div>
+                                        <button class="payment-paybtn">Pay <span>$49</span> </button>
+                                    </div>
+                                </vs-popup>
+                        </div>
                         <span class="price-section__more">By clicking Pay you agree with our <a href="#">Terms of Service and Privacy Policy</a>. Thank you for trusting our service</span>
                     </a>
                 </div>
             </div>
         </div> 
-        </div>     
+        </div>    
+    </div>
+    <Footer /> 
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import PricingHeader from './PricingHeader.vue'
+import Footer from "./Footer.vue";
 import {vsButton, vsPopup } from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css';
 export default {
     components:{
-        PricingHeader
+        PricingHeader,
+        Footer
     },
     data(){
         return {
             popupActivo:false,
         }
     },
-    methods(){
-        
-    }
+    methods: {
+    },
 }
 
 Vue.use(vsPopup);
@@ -168,6 +216,9 @@ Vue.use(vsButton);
         line-height: 30px;
         text-align: center;
         color: #130F40;
+         @media screen and (max-width: 568px){
+            font-size: 16px;
+        }
     }
     .payment-summary{
         margin: 0px 20px 10px;
@@ -175,18 +226,27 @@ Vue.use(vsButton);
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+            @media screen and (max-width: 568px){
+               margin-top: 15px;
+            }
             h6{
                 font-weight: 300;
                 font-size: 16px;
                 line-height: 24px;
                 text-align: center;
                 color: #2C2C2C;
+                @media screen and (max-width: 568px){
+                    font-size: 12px;
+                }
             }
             p{
                 font-size: 18px;
                 line-height: 27px;
                 text-align: center;
                 color: #130F40;
+                @media screen and (max-width: 568px){
+                    font-size: 14px;
+                }
             }
         }
         &__total{
@@ -195,6 +255,9 @@ Vue.use(vsButton);
                 line-height: 30px;
                 text-align: center;
                 color: #130F40;
+                @media screen and (max-width: 568px){
+                    font-size: 16px;
+                }
             }
             p{
                 font-weight: bold;
@@ -202,6 +265,9 @@ Vue.use(vsButton);
                 line-height: 37px;
                 text-align: center;
                 color: #130F40;
+                @media screen and (max-width: 568px){
+                    font-size: 18px;
+                }
             }
         }
     }
@@ -247,12 +313,18 @@ Vue.use(vsButton);
             padding: 12px 15px;
             border-radius: 10px;
             margin-bottom: 12px;
+            @media screen and (max-width: 568px){
+                padding: 7px 10px;
+            }
         }
         label{
             font-size: 16px;
             line-height: 24px;
             color: #232323;
             margin-bottom: 5px;
+            @media screen and (max-width: 568px){
+                font-size: 12px;
+            }
         }
     }
 }
@@ -277,6 +349,9 @@ Vue.use(vsButton);
         height: 180px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+         @media screen and (max-width: 568px){
+            height: 115px;
+        }
     }
 }
 
@@ -385,7 +460,7 @@ Vue.use(vsButton);
               transition: 0.3s;
             }
              @media screen and (max-width: 1440px){
-                 width: 42%;
+                 width: 48%;
              }
              @media screen and (max-width: 960px){
                 width: 90%;
@@ -393,6 +468,7 @@ Vue.use(vsButton);
             }
              @media screen and (max-width: 568px){
                  padding: 15px;
+                 width: 100%;
              }
 		}
     }
@@ -461,7 +537,7 @@ Vue.use(vsButton);
                 padding: 15px 10px;
                 width: 30%;
                 @media screen and (max-width: 568px){
-                    width: 27%;
+                    width: 30%;
                     padding: 10px 7px 15px;
                 }
                 h6{
@@ -485,6 +561,12 @@ Vue.use(vsButton);
                     align-items: center;
                     a > span{
                          font-weight: 600;
+                        @media screen and (max-width: 1200px){
+                            display: block;
+                        }
+                         @media screen and (max-width: 960px){
+                            display: inline;
+                        }
                     }
                     a{
                         display: inline-block;

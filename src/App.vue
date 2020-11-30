@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
-import Footer from "./components/Footer.vue";
+// import Footer from "./components/Footer.vue";
 import 'material-icons/iconfont/material-icons.css';
 export default {
   name: 'App',
   components: {
-    Footer
+    // Footer
   }
 }
 </script>
@@ -32,6 +32,36 @@ export default {
     display: none;
 }
 
+.tabs-component-tabs{
+    display: flex;
+    justify-content: center;
+}
+
+.tabs-component-tab a{
+    margin: 0px 25px;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 37px;
+    color: #232323;
+  position: relative;
+}
+
+.tabs-component-tabs .is-active a{
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 37px;
+  color: #FF1616;
+}
+.tabs-component-tabs li:first-child a::before{
+  background: url(./assets/registration/line.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -27px;
+  width: 1px;
+  height: 28px;
+  background-size: cover;
+}
 .con-vs-popup .vs-popup{
   position: relative;
 }
@@ -184,6 +214,15 @@ body.bm-overlay .bm-cross{
   margin: 0 auto;
 }
 
+@media screen and (max-width: 1560px){
+   .tabs-component-tabs .is-active a,
+     .tabs-component-tabs  a{
+      font-size: 20px;
+    }
+    .tabs-component-tabs li:first-child a::before{
+      height: 23px;
+    }
+}
 @media screen and (max-width: 1440px){
     ._container{
         width: 80%;
@@ -211,6 +250,12 @@ body.bm-overlay .bm-cross{
   }
   .header-burger{
     display: block;
+  }
+  .con-vs-popup .vs-popup::before{
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    top: -32px;
   }
 }
 
