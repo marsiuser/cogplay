@@ -16,6 +16,8 @@ var _Profile = _interopRequireDefault(require("./components/Profile.vue"));
 
 var _RegistrationPage = _interopRequireDefault(require("./components/RegistrationProfile/RegistrationPage.vue"));
 
+var _ForgotPassword = _interopRequireDefault(require("./components/RegistrationProfile/ForgotPassword.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _vue["default"].use(_vueRouter["default"]);
@@ -32,6 +34,9 @@ var routes = [{
 }, {
   path: '/registration',
   component: _RegistrationPage["default"]
+}, {
+  path: '/forgotpassword',
+  component: _ForgotPassword["default"]
 }];
 var router = new _vueRouter["default"]({
   routes: routes

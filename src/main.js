@@ -6,6 +6,7 @@ import Main from "./components/MainPage.vue"
 import Pricing from "./components/Pricing.vue";
 import Profile from "./components/Profile.vue";
 import RegistrationPage from "./components/RegistrationProfile/RegistrationPage.vue";
+import ForgotPassword from "./components/RegistrationProfile/ForgotPassword.vue";
 
 Vue.use(VueRouter);
 
@@ -14,6 +15,7 @@ const routes = [
   { path : '/pricing', component : Pricing},
   { path : '/profile', component : Profile},
   { path : '/registration', component : RegistrationPage},
+  { path : '/forgotpassword', component : ForgotPassword},
 ]
 
 const router = new VueRouter({

@@ -23,6 +23,15 @@ export default {
  font-family: 'Poppins', sans-serif;
 }
 
+.vs-popup--content::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+.vs-popup--content::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background-color: rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+}
 .vs-popup-primary .vs-popup--background{
     background: rgba(35, 35, 35, 0.7) !important;
     backdrop-filter: blur(19px) !important;
@@ -67,14 +76,14 @@ export default {
 }
 
 .con-vs-popup .vs-popup::before{
-  content: "";
+  /* content: "";
   position: absolute;
   top: -55px;
   right: 0px;
   background: url(assets/Pricing/close-payment.svg) no-repeat;
   width: 40px;
   height: 40px;
-  cursor: pointer;
+  cursor: pointer; */
 }
 .vs-popup--content{
   width: 100% !important;

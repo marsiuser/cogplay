@@ -1,46 +1,122 @@
 <template>
     <div class="registration">
         <div class="registration-bg">
-            <img class="registration-bg__logo" src="../../assets/registration/logo_black.svg" alt="logo">
+            <router-link :to="'/'"><img class="registration-bg__logo" src="../../assets/registration/logo_black.svg" alt="logo"></router-link>
         </div>
+    
         <div class="registration-section">
-            <div class="registration-form">
+            <!--                       TAB FORGOT PASSWORD 1                      -->
+            <div class="registration-form form-forgotPasw" v-show="visibleForgotPassword">
+               <div class="registration-form__wrapper">
+                    <h3>Forgot your password?</h3>
+                <div>
+                    <form action="#" name="Forgot password" id="forgPas-form">
+                        <div class="registration-form__enter">
+                            <label for="forgPas-email">Email</label>
+                            <span class="registration-form__note">You will get an email with recovery link</span>
+                            <input type="text" id="forgPas-email" placeholder="Enter your email">
+                            <a href="#" class="registration-form__again">Didn’t get the email? Send again</a>
+                        </div>
+                        <button class="registration-create" @click="newPaswword">Send</button>
+                    </form>
+                </div>
+               </div>
+            </div>
+            <!--                     END  TAB FORGOT PASSWORD 1                      -->
+
+            <!--                        TAB NEW PASSWORD                         -->
+
+            <div class="registration-form form-newPassword" v-show="visibleNewPassword">
+               <div class="registration-form__wrapper">
+                    <h3><img @click="prevPage" src="../../assets/registration/previous.svg" alt="prev"> <span>Forgot your password?</span></h3>
+                <div>
+                    <form action="#" name="New password" id="newPassword-form">
+                         <div class="registration-form__enter">
+                                    <label for="newPassword-password">New password</label>
+                                     <div class="enter-wrapper">
+                                        <input type="text" id="newPassword-password" placeholder="Enter your password">
+                                        <div class="hide-password">
+                                            <img src="../../assets/registration/eye-close.svg" alt="hide password">
+                                        </div>
+                                     </div>
+                              </div>
+                              <div class="registration-form__enter">
+                                    <label for="newPassword-password">Confirm Password</label>
+                                     <div class="enter-wrapper">
+                                        <input type="text" id="newPassword-password" placeholder="Confirm password">
+                                        <div class="hide-password">
+                                            <img src="../../assets/registration/eye-close.svg" alt="hide password">
+                                        </div>
+                                     </div>
+                              </div>
+                             <button class="registration-create" @click="lastStep">Change password</button>
+                    </form>
+                </div>
+               </div>
+            </div>
+              <!--                      END TAB NEW PASSWORD                         -->
+
+            <!--                        TAB SUCCESSES                       -->
+
+            <div class="registration-form form-successes" v-show="visibleSuccesses">
+               <div class="registration-form__wrapper">
+                    <h3>Successful password reset!</h3>
+                <div>
+                    <form action="#" name="New password" id="newPassword-form">
+                        <div class="registration-form__enter">
+                            <p class="form-successes__last">You can now use your new password to login to your account</p>
+                        </div>
+                        <button class="registration-create" @click="openRigistration">Log in</button>
+                    </form>
+                </div>
+               </div>
+            </div>
+              <!--                                  END  TAB SUCCESSES                                     -->
+
+              <!--                       TAB SIGN UP/ LOG IN                         -->
+            <div class="registration-form" v-show="visibleSignUp" >
                <div class="registration-form__wrapper">
                     <h3>Welcome to Cogplay!</h3>
                 <div>
                     <tabs>
                         <tab name="Sign Up">
-                            <form action="#" name="Sign up" id="signUp-form">
+                            <form action="#" name="Sign up" id="signUp-form" @submit="checkForm">
                               <div class="registration-form__enter">
                                     <label for="full-name">Full Name</label>
                                     <div class="enter-wrapper">
-                                        <input type="text" id="full-name" placeholder="Enter your full name">
+                                        <input v-model="fullName" type="text" id="full-name" placeholder="Enter your full name">
                                         <p class="count-text">0/50</p>
                                     </div>
+                                    <span class="validation-error">{{errorName}}</span>
                               </div>
                                 <div class="registration-form__enter">
                                     <label for="signUp-email">Email</label>
-                                    <input type="text" id="signUp-email" placeholder="Enter your email">
+                                    <input v-model="signUpEmail" type="text" id="signUp-email" placeholder="Enter your email">
+                                    <span class="validation-error">{{errorEmail}}</span>
                               </div>
                                 <div class="registration-form__enter">
                                     <label for="signUp-password">Password</label>
                                      <div class="enter-wrapper">
-                                        <input type="text" id="signUp-password" placeholder="Enter your password">
+                                        <input v-model="signUpPassword" type="password" id="signUp-password" placeholder="Enter your password">
                                         <div class="hide-password">
-                                            <img src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="hidePassword" @click="hidePassw" src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="showPassword" @click="showPassw" src="../../assets/registration/eye.svg" alt="show password">
                                         </div>
                                      </div>
+                                     <span class="validation-error">{{errorPassword}}</span>
                               </div>
                               <div class="registration-form__enter">
-                                    <label for="signUp-password">Confirm Password</label>
+                                    <label for="signUp-passwordConfirm">Confirm Password</label>
                                      <div class="enter-wrapper">
-                                        <input type="text" id="signUp-password" placeholder="Confirm password">
+                                        <input v-model="signUpConfPassword" type="password" id="signUp-passwordConfirm" placeholder="Confirm password">
                                         <div class="hide-password">
-                                            <img src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="hidePassword1" @click="hidePassw1" src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="showPassword1" @click="showPassw1" src="../../assets/registration/eye.svg" alt="show password">
                                         </div>
                                      </div>
+                                    <span class="validation-error">{{errorConfPassword}}</span>
                               </div>
-                              <button class="registration-create">Create account</button>
+                              <input type="submit" class="registration-create" value="Create account">
                             </form>
                             <div class="registration-bottom">
                                 <p>or</p>
@@ -69,12 +145,13 @@
                                 <div class="registration-form__enter">
                                     <label for="logIn-password">Password</label>
                                      <div class="enter-wrapper">
-                                        <input type="text" id="logIn-password" placeholder="Enter your password">
+                                        <input type="password" id="logIn-password" placeholder="Enter your password">
                                         <div class="hide-password">
-                                            <img src="../../assets/registration/eye.svg" alt="hide password">
+                                            <img v-show="hidePassword2" @click="hidePassw2" src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="showPassword2" @click="showPassw2" src="../../assets/registration/eye.svg" alt="show password">
                                         </div>
                                      </div>
-                                     <a href="#" class="registration-forgotpas">Forgot your password? </a>
+                                     <a @click="openChangePassword" href="#" class="registration-forgotpas">Forgot your password? </a>
                               </div>
                               <button class="registration-create">Log in</button>
                             </form>
@@ -100,6 +177,7 @@
                 </div>
                </div>
             </div>
+             <!--                      END TAB SIGN UP/ LOG IN                         -->
         </div>
     </div>
 </template>
@@ -115,16 +193,149 @@ Vue.component('tab', Tab);
 Vue.use(Tabs);
 export default {
   name: 'RegistrationPage',
+  data: function () {
+    return {
+         visibleSignUp: true,
+         visibleForgotPassword: false,
+         visibleNewPassword: false,
+         visibleSuccesses: false,
+         hidePassword: true,
+         showPassword: false,
+         hidePassword1: true,
+         showPassword1: false,
+         hidePassword2: true,
+         showPassword2: false,
+         fullName: null,
+         signUpEmail:null,
+         signUpPassword: null,
+         signUpConfPassword: null,
+         errorName: '',
+         errorEmail:'',
+         errorPassword:'',
+         errorConfPassword:''
+    }
+  },
+  methods:{
+      openChangePassword: function(){
+          this.visibleSignUp = false;
+          this.visibleForgotPassword = true;
+      },
+      newPaswword: function(){
+          this.visibleForgotPassword = false;
+          this.visibleNewPassword = true;
+      },
+      prevPage: function(){
+          this.visibleNewPassword = false;
+          this.visibleForgotPassword = true;
+      },
+      lastStep: function(){
+         this.visibleNewPassword = false;
+          this.visibleSuccesses = true;
+      },
+      openRigistration: function(){
+          this.visibleSuccesses = false;
+          this.visibleSignUp = true;
+      },
+      hidePassw: function(){
+          this.hidePassword = false;
+          this.showPassword = true;
+          document.getElementById('signUp-password').type = 'text';
+      },
+    hidePassw1: function(){
+        this.hidePassword1 = false;
+        this.showPassword1 = true;
+        document.getElementById('signUp-passwordConfirm').type = 'text';
+    },
+    hidePassw2: function(){
+        this.hidePassword2 = false;
+        this.showPassword2 = true;
+        document.getElementById('logIn-password').type = 'text';
+    },
+    showPassw: function(){
+        this.showPassword = false; 
+        this.hidePassword = true;
+        document.getElementById('signUp-password').type = 'password';
+    },
+    showPassw1: function(){
+        this.showPassword1 = false; 
+        this.hidePassword1 = true;
+        document.getElementById('signUp-passwordConfirm').type = 'password';
+    },
+    showPassw2: function(){
+        this.showPassword2 = false; 
+        this.hidePassword2 = true;
+        document.getElementById('logIn-password').type = 'password';
+    },
+    checkForm:function(e) {
+        if(this.fullName && this.signUpEmail && this.signUpPassword && this.signUpConfPassword) return true;
+
+        this.errorName = '';
+        this.errorEmail = '';
+        this.signUpPassword = '';
+        this.signUpConfPassword = '';
+        if(!this.fullName) this.errorName ="Name required.";
+        if(!this.signUpEmail ) {
+            this.errorEmail ="Email required.";
+        }  
+        if(!this.validEmail(this.signUpEmail)) {
+            this.errorEmail ="Valid email required." ; 
+        }
+        if(!this.signUpPassword) this.errorPassword = "Password required.";
+        if(!this.signUpConfPassword) this.errorConfPassword="Password configm required.";
+        e.preventDefault();
+    },
+    validEmail:function(signUpEmail) {
+      //eslint-disable-next-line
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(signUpEmail);
+    }
+  },
+  
 }
 </script>
 
 <style  lang="scss" scoped>
+  .form-newPassword h3{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+                margin-left: 20px;
+        }
+        img{
+            cursor: pointer;
+        }
+    }
+    .form-successes__last{
+        text-align: center;
+        line-height: 28px;
+    }
     .registration {
         display: flex;
         justify-content: space-between;
         height: 100vh;
         @media screen and (max-width: 998px){
             flex-direction: column;
+        }
+        .form-forgotPasw{
+            @media screen and (max-width: 998px){
+                transform: translateY(-80%);
+            }
+        }
+        .form-successes{
+             @media screen and (max-width: 998px){
+                transform: translateY(-175%);
+            }
+        }
+        .form-newPassword{
+             @media screen and (max-width: 998px){
+                transform: translateY(-70%);
+            }
+        }
+        .validation-error{
+            margin-top: 5px;
+            color: #eb0000;
+            font-size: 12px;
         }
         .registration-bg {
             width: 50%;
@@ -237,6 +448,12 @@ export default {
                     font-size: 10px;
                 }
             }
+            &__again{
+                font-size: 14px;
+                line-height: 21px;
+                color: #1312DD;
+                margin-top: 7px;
+            }
             &__wrapper{
                 background: #FFFFFF;
                 box-shadow: 0px 4px 14px rgba(19, 15, 64, 0.4);
@@ -271,12 +488,19 @@ export default {
                     margin-top: 25px;
                 }
             }
+            &__note{
+                font-size: 14px;
+                line-height: 21px;
+                color: #232323;
+                opacity: 0.5;
+                margin: -5px 0px 10px;
+            }
             // .registration-form__enter
 
             &__enter {
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
                 label{
                     margin-bottom: 5px;
                     font-size: 16px;
@@ -293,15 +517,17 @@ export default {
                 }
                 input::placeholder { 
                     color: #232323;
-                    opacity: 1; 
+                    opacity: 0.5; 
                 }
 
                  input:-ms-input-placeholder { 
                     color: #232323;
+                    opacity: 0.5;
                 }
 
                  input::-ms-input-placeholder { 
                     color: #232323;
+                    opacity: 0.5;
                 }
                 .enter-wrapper{
                     position: relative;
@@ -321,6 +547,9 @@ export default {
                         top: 50%;
                         right: 0%;
                         transform: translate(-50%, -50%);
+                        img{
+                            width: 24px;
+                        }
                     }
                 }
             }
