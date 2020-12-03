@@ -75,6 +75,20 @@ export default {
   position: relative;
 }
 
+.neuroplaticity-popup .vs-popup{
+    background: transparent  !important;
+    background-color: transparent !important;
+}
+
+.neuroplaticity-popup .vs-popup--content{
+  height: 790px;
+}
+
+.neuroplaticity-popup  .vs-popup{
+    box-shadow: unset  !important;
+    -webkit-box-shadow: unset !important;
+}
+
 .con-vs-popup .vs-popup::before{
   /* content: "";
   position: absolute;

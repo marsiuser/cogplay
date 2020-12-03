@@ -14,7 +14,8 @@
                         <div class="registration-form__enter">
                             <label for="forgPas-email">Email</label>
                             <span class="registration-form__note">You will get an email with recovery link</span>
-                            <input type="text" id="forgPas-email" placeholder="Enter your email">
+                            <input v-model="emailForgot" type="text" id="forgPas-email" placeholder="Enter your email">
+                            <span class="validation-error">{{errorEmail}}</span>
                             <a href="#" class="registration-form__again">Didn’t get the email? Send again</a>
                         </div>
                         <button class="registration-create" @click="newPaswword">Send</button>
@@ -34,20 +35,24 @@
                          <div class="registration-form__enter">
                                     <label for="newPassword-password">New password</label>
                                      <div class="enter-wrapper">
-                                        <input type="text" id="newPassword-password" placeholder="Enter your password">
-                                        <div class="hide-password">
-                                            <img src="../../assets/registration/eye-close.svg" alt="hide password">
+                                        <input v-model="newPas" type="text" id="formNewPassw" placeholder="Enter your password">
+                                         <div class="hide-password">
+                                            <img v-show="hidePassword4" @click="hidePassw4" src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="showPassword4" @click="showPassw4" src="../../assets/registration/eye.svg" alt="show password">
                                         </div>
                                      </div>
+                                     <span class="validation-error">{{errorNewPassword}}</span>
                               </div>
                               <div class="registration-form__enter">
                                     <label for="newPassword-password">Confirm Password</label>
                                      <div class="enter-wrapper">
-                                        <input type="text" id="newPassword-password" placeholder="Confirm password">
-                                        <div class="hide-password">
-                                            <img src="../../assets/registration/eye-close.svg" alt="hide password">
+                                        <input v-model="confNewPas" type="password" id="newPassword-password" placeholder="Confirm password">
+                                         <div class="hide-password">
+                                            <img v-show="hidePassword3" @click="hidePassw3" src="../../assets/registration/eye-close.svg" alt="hide password">
+                                            <img v-show="showPassword3" @click="showPassw3" src="../../assets/registration/eye.svg" alt="show password">
                                         </div>
                                      </div>
+                                     <span class="validation-error">{{errorConfigmNewPassword}}</span>
                               </div>
                              <button class="registration-create" @click="lastStep">Change password</button>
                     </form>
@@ -137,20 +142,22 @@
                             </div>
                         </tab>
                         <tab name="Log in">
-                           <form action="#" name="Log in" id="logIn-form">
+                           <form action="#" name="Log in" id="logIn-form" @submit="checkLogInForm">
                                 <div class="registration-form__enter">
                                     <label for="logIn-email">Email</label>
-                                    <input type="text" id="logIn-email" placeholder="Enter your email">
+                                    <input v-model="signEmail" type="text" id="logIn-email" placeholder="Enter your email">
+                                    <span class="validation-error">{{errorEmail}}</span>
                               </div>
                                 <div class="registration-form__enter">
                                     <label for="logIn-password">Password</label>
                                      <div class="enter-wrapper">
-                                        <input type="password" id="logIn-password" placeholder="Enter your password">
+                                        <input v-model="signPas" type="password" id="logIn-password" placeholder="Enter your password">
                                         <div class="hide-password">
                                             <img v-show="hidePassword2" @click="hidePassw2" src="../../assets/registration/eye-close.svg" alt="hide password">
                                             <img v-show="showPassword2" @click="showPassw2" src="../../assets/registration/eye.svg" alt="show password">
                                         </div>
                                      </div>
+                                     <span class="validation-error">{{errorName}}</span>
                                      <a @click="openChangePassword" href="#" class="registration-forgotpas">Forgot your password? </a>
                               </div>
                               <button class="registration-create">Log in</button>
@@ -205,14 +212,26 @@ export default {
          showPassword1: false,
          hidePassword2: true,
          showPassword2: false,
+         hidePassword3: true,
+         showPassword3: false,
+        hidePassword4: true,
+         showPassword4: false,
          fullName: null,
          signUpEmail:null,
          signUpPassword: null,
          signUpConfPassword: null,
+         newPas: null,
+         confNewPas: null,
+         signPas: null,
+         signEmail: null,
+         emailForgot: null,
          errorName: '',
          errorEmail:'',
          errorPassword:'',
-         errorConfPassword:''
+         errorConfPassword:'',
+         loginPassword:'',
+         errorConfigmNewPassword:'',
+         errorNewPassword:''
     }
   },
   methods:{
@@ -220,17 +239,33 @@ export default {
           this.visibleSignUp = false;
           this.visibleForgotPassword = true;
       },
-      newPaswword: function(){
-          this.visibleForgotPassword = false;
-          this.visibleNewPassword = true;
+      newPaswword: function(e){
+          this.errorEmail = '';
+            if(!this.emailForgot) this.errorEmail ="Email required.";
+            if(!this.validEmail(this.emailForgot)) {
+                this.errorEmail ="Valid email required." ; 
+            }
+            if(this.emailForgot && this.validEmail(this.emailForgot)){
+                this.visibleForgotPassword = false;
+                this.visibleNewPassword = true;
+            }
+            e.preventDefault();
       },
       prevPage: function(){
           this.visibleNewPassword = false;
           this.visibleForgotPassword = true;
       },
-      lastStep: function(){
-         this.visibleNewPassword = false;
-          this.visibleSuccesses = true;
+      lastStep: function(e){
+          this.errorConfigmNewPassword = '';
+          this.errorNewPassword ='';
+          if(!this.newPas) this.errorNewPassword ="Password required.";
+          if(!this.confNewPas) this.errorConfigmNewPassword = "Configm Password required."
+          if(!(this.newPas === this.confNewPas)) this.errorConfigmNewPassword = "Passwords must be the same."
+          if((this.newPas && this.confNewPas) && (this.newPas === this.confNewPas)){
+            this.visibleNewPassword = false;
+            this.visibleSuccesses = true;
+          }
+          e.preventDefault();
       },
       openRigistration: function(){
           this.visibleSuccesses = false;
@@ -251,6 +286,16 @@ export default {
         this.showPassword2 = true;
         document.getElementById('logIn-password').type = 'text';
     },
+     hidePassw3: function(){
+        this.hidePassword3 = false;
+        this.showPassword3 = true;
+        document.getElementById('newPassword-password').type = 'text';
+    },
+      hidePassw4: function(){
+        this.hidePassword4 = false;
+        this.showPassword4 = true;
+        document.getElementById('formNewPassw').type = 'text';
+    },
     showPassw: function(){
         this.showPassword = false; 
         this.hidePassword = true;
@@ -266,29 +311,51 @@ export default {
         this.hidePassword2 = true;
         document.getElementById('logIn-password').type = 'password';
     },
+    showPassw3: function(){
+        this.showPassword3 = false; 
+        this.hidePassword3 = true;
+        document.getElementById('newPassword-password').type = 'password';
+    },
+     showPassw4: function(){
+        this.showPassword4 = false; 
+        this.hidePassword4 = true;
+        document.getElementById('formNewPassw').type = 'password';
+    },
     checkForm:function(e) {
-        if(this.fullName && this.signUpEmail && this.signUpPassword && this.signUpConfPassword) return true;
-
         this.errorName = '';
         this.errorEmail = '';
-        this.signUpPassword = '';
-        this.signUpConfPassword = '';
+        this.errorPassword = '';
+        this.errorConfPassword = '';
         if(!this.fullName) this.errorName ="Name required.";
+        if(!this.signUpPassword) this.errorPassword = "Password required.";
+        if(!this.signUpConfPassword) this.errorConfPassword="Password configm required.";
+        if(!(this.signUpPassword === this.signUpConfPassword)) this.errorConfPassword = "Passwords must be the same."
         if(!this.signUpEmail ) {
             this.errorEmail ="Email required.";
         }  
         if(!this.validEmail(this.signUpEmail)) {
             this.errorEmail ="Valid email required." ; 
         }
-        if(!this.signUpPassword) this.errorPassword = "Password required.";
-        if(!this.signUpConfPassword) this.errorConfPassword="Password configm required.";
+        if((this.fullName && this.signUpEmail && this.signUpPassword && this.signUpConfPassword) && (this.signUpPassword === this.signUpConfPassword)) return true;
         e.preventDefault();
     },
     validEmail:function(signUpEmail) {
       //eslint-disable-next-line
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(signUpEmail);
-    }
+    },
+    checkLogInForm:function(e){
+        this.errorName = '';
+        this.errorEmail = '';
+        this.loginPassword = '';
+        if(!this.signEmail) this.errorEmail ="Email required.";
+         if(!this.validEmail(this.signEmail)) {
+            this.errorEmail ="Valid email required." ; 
+        }
+        if(!this.signPas) this.errorName ="Password required.";
+        if(this.signEmail && this.signPas) return true;
+        e.preventDefault();
+    },
   },
   
 }

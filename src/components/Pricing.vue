@@ -44,49 +44,49 @@
                             </div>
                         </div>
                         <div class="price_card-button">
-                                <vs-button @click="popupActivo=true" >Become a member</vs-button>
-                                <vs-popup class="holamundo"  :active.sync="popupActivo">
-                                    <div class="payment-header"></div>
-                                    <div class="payment-body">
-                                        <h5>Payment Info</h5>
-                                        <form action="#" name="payment-form" id="payment" class="payment-form">
-                                            <label for="card-number">Card Number</label>
-                                            <input type="text" id="card-number">
-                                            <div class="payment-wrapper">
-                                                <div class="payment-input">
-                                                     <label for="expiry-date">Expiry Date</label>
-                                                      <input type="text" id="expiry-date">
-                                                </div>
-                                                <div class="payment-input">
-                                                     <label for="secure-code">Secure Code</label>
-                                                      <input type="text" id="secure-code">
-                                                </div>
+                            <vs-button @click="popupActivo=true" >Become a member</vs-button>
+                            <vs-popup class="holamundo"  :active.sync="popupActivo">
+                                <div class="payment-header"></div>
+                                <div class="payment-body">
+                                    <h5>Payment Info</h5>
+                                    <form action="#" name="payment-form" id="payment" class="payment-form">
+                                        <label for="card-number">Card Number</label>
+                                        <input type="text" id="card-number">
+                                        <div class="payment-wrapper">
+                                            <div class="payment-input">
+                                                    <label for="expiry-date">Expiry Date</label>
+                                                    <input type="text" id="expiry-date">
                                             </div>
-                                             <label for="cardholder-name">Cardholder Name</label>
-                                            <input type="text" id="cardholder-name">
-                                        </form>
-                                        <h5>Order Summary</h5>
-                                        <div class="payment-summary">
-                                            <div class="payment-summary__line">
-                                                <h6>Plan</h6>
-                                                <p>Parents with 1 child</p>
-                                            </div>
-                                            <div class="payment-summary__line">
-                                                <h6>Program</h6>
-                                                <p>Math</p>
-                                            </div>
-                                            <div class="payment-summary__line">
-                                                <h6>Time</h6>
-                                                <p>Month</p>
-                                            </div>
-                                             <div class="payment-summary__line payment-summary__total">
-                                                <h6>Total</h6>
-                                                <p>$49</p>
+                                            <div class="payment-input">
+                                                    <label for="secure-code">Secure Code</label>
+                                                    <input type="text" id="secure-code">
                                             </div>
                                         </div>
-                                        <button class="payment-paybtn">Pay <span>$49</span> </button>
+                                            <label for="cardholder-name">Cardholder Name</label>
+                                        <input type="text" id="cardholder-name">
+                                    </form>
+                                    <h5>Order Summary</h5>
+                                    <div class="payment-summary">
+                                        <div class="payment-summary__line">
+                                            <h6>Plan</h6>
+                                            <p>Parents with 1 child</p>
+                                        </div>
+                                        <div class="payment-summary__line">
+                                            <h6>Program</h6>
+                                            <p>Math</p>
+                                        </div>
+                                        <div class="payment-summary__line">
+                                            <h6>Time</h6>
+                                            <p>Month</p>
+                                        </div>
+                                            <div class="payment-summary__line payment-summary__total">
+                                            <h6>Total</h6>
+                                            <p>$49</p>
+                                        </div>
                                     </div>
-                                </vs-popup>
+                                    <button class="payment-paybtn">Pay <span>$49</span> </button>
+                                </div>
+                            </vs-popup>
                         </div>
                         <!-- <button class="price_card-button">Become a member</button> -->
                         <span class="price-section__more">By clicking Pay you agree with our <a href="#">Terms of Service and Privacy Policy</a>. Thank you for trusting our service</span>

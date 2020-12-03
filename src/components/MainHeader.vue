@@ -46,7 +46,10 @@
                         <p>Research has shown over and over “name” produces real results</p>
                     </div>
                     <div class="card-course__read">
-                        <a href="#">Read more</a>
+                        <a href="#" @click="popupActivo=true" >Read more</a>
+                        <vs-popup class="neuroplaticity-popup"  :active.sync="popupActivo">
+                            <div class="neuroplaticity-popup__image"></div>
+                        </vs-popup>
                     </div>
                 </div>
                 <div class="course__card card-course">
@@ -58,7 +61,10 @@
                         <p>Read our case studies to see how “name” drives success in classrooms nationwide </p>
                     </div>
                     <div class="card-course__read">
-                        <a href="#">Read more</a>
+                        <a href="#" @click="popupEye=true" >Read more</a>
+                        <vs-popup class="eye-popup neuroplaticity-popup" :active.sync="popupEye">
+                            <div class="eye-popup__image"></div>
+                        </vs-popup>
                     </div>
                 </div>
                 <div class="course__card card-course">
@@ -70,7 +76,10 @@
                         <p>The Elite 100 share why they turn to “name” to help their students grow</p>
                     </div>
                     <div class="card-course__read">
-                        <a href="#">Read more</a>
+                         <a href="#" @click="popupTeaching=true" >Read more</a>
+                        <vs-popup class="neuroplaticity-popup teaching-popup"  :active.sync="popupTeaching">
+                            <div class="neuroplaticity-popup__image teaching-popup__image"></div>
+                        </vs-popup>
                     </div>
                 </div>
                 <div class="course__card card-course">
@@ -82,7 +91,10 @@
                         <p>Walk into the classroom every dau, and understand exactly what students know and precisely what to do next to help them improve</p>
                     </div>
                     <div class="card-course__read">
-                        <a href="#">Read more</a>
+                        <a href="#" @click="popupCross=true" >Read more</a>
+                        <vs-popup class="neuroplaticity-popup cross-popup"  :active.sync="popupCross">
+                            <div class="neuroplaticity-popup__image cross-popup__image"></div>
+                        </vs-popup>
                     </div>
                 </div>
             </div>
@@ -92,12 +104,26 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { Slide } from 'vue-burger-menu' 
+import {vsButton, vsPopup } from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+import 'material-icons/iconfont/material-icons.css';
 export default {
    components: {
-        Slide // Register your component
-    }
+        Slide, // Register your component
+    },
+      data(){
+        return {
+            popupActivo:false,
+            popupEye: false,
+            popupTeaching: false,
+            popupCross: false
+        }
+    },
 }
+Vue.use(vsPopup);
+Vue.use(vsButton);
 </script>
 
 <style  lang="scss" scoped>
@@ -402,6 +428,60 @@ export default {
 		}
 }
 
+.neuroplaticity-popup{
+    // .neuroplaticity-popup__image
+    &__image{
+        background: url(../assets/courses/popup1.png) no-repeat;
+        background-size: 100%;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        @media screen and (max-width: 1560px){
+            width: 75%;
+        }
+    }
+}
+
+.eye-popup{
+    // .eye-popup__image
+    &__image{
+        background: url(../assets/courses/popup2.png) no-repeat;
+        background-size: 100%;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+           @media screen and (max-width: 1560px){
+            width: 75%;
+        }
+    }
+}
+
+.teaching-popup{
+     // .teaching-popup__image
+    &__image{
+        background: url(../assets/courses/popup3.png) no-repeat;
+        background-size: 100%;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+           @media screen and (max-width: 1560px){
+            width: 75%;
+        }
+    }
+}
+.cross-popup{
+     // .cross-popup__image
+    &__image{
+        background: url(../assets/courses/popup4.png) no-repeat;
+        background-size: 100%;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+           @media screen and (max-width: 1560px){
+            width: 75%;
+        }
+    }
+}
 // ************************  COURSES SECTION END ***************************
 
 
