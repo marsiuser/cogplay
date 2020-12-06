@@ -21,10 +21,10 @@
                            </div>
                         </div>
                         <div class="price-plans">
-                            <div class="price-plan">
+                            <div class="price-plan price-plan__current">
                                 <h6>Math</h6>
                                 <div class="price-plan__cost">
-                                    <a href="#"><span>$49</span>/month</a>
+                                    <a class="plice-plan__currentSesson" href="#"><span>$49</span>/month</a>
                                     <a href="#"><span>$299</span>/year</a>
                                 </div>
                             </div>
@@ -183,7 +183,7 @@ import PricingHeader from './PricingHeader.vue'
 import Footer from "./Footer.vue";
 import {vsButton, vsPopup } from 'vuesax'
 import 'vuesax/dist/vuesax.css'
-import 'material-icons/iconfont/material-icons.css';
+
 export default {
     components:{
         PricingHeader,
@@ -461,6 +461,7 @@ Vue.use(vsButton);
             }
              @media screen and (max-width: 1440px){
                  width: 48%;
+                 padding: 20px;
              }
              @media screen and (max-width: 960px){
                 width: 90%;
@@ -540,6 +541,13 @@ Vue.use(vsButton);
                     width: 30%;
                     padding: 10px 7px 15px;
                 }
+                // .price-plan__current
+                &__current{
+                    border: 2px solid #FF1616;
+                    .plice-plan__currentSesson{
+                        background-color: #F6EF25;
+                    }
+                }
                 h6{
                     font-size: 16px;
                     line-height: 24px;
@@ -580,10 +588,6 @@ Vue.use(vsButton);
                         line-height: 24px;
                         color: #232323;
                         margin-bottom: 10px;
-                        &:hover{
-                            background-color: #F6EF25;
-                            transition: 0.3s;
-                        }
                           @media screen and (max-width: 568px){
                             font-size: 10px;
                             line-height: 15px;

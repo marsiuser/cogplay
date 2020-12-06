@@ -89,7 +89,7 @@
                               <div class="registration-form__enter">
                                     <label for="full-name">Full Name</label>
                                     <div class="enter-wrapper">
-                                        <input v-model="fullName" type="text" id="full-name" placeholder="Enter your full name">
+                                        <input v-model="fullName" maxlength="50" type="text" id="full-name" placeholder="Enter your full name">
                                         <p class="count-text">0/50</p>
                                     </div>
                                     <span class="validation-error">{{errorName}}</span>
@@ -380,7 +380,6 @@ export default {
     .registration {
         display: flex;
         justify-content: space-between;
-        height: 100vh;
         @media screen and (max-width: 998px){
             flex-direction: column;
         }

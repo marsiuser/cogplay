@@ -23,6 +23,40 @@ export default {
  font-family: 'Poppins', sans-serif;
 }
 
+.enter-wrapper .vs__dropdown-toggle{
+  border: 1px solid #130F40;
+  border-radius: 10px;
+  padding: 6px 15px;
+  color: #232323;
+  width: 100%;
+}
+
+.enter-wrapper  .vs__clear{
+  display: none;
+}
+
+.enter-wrapper .vs__search,  .enter-wrapper .vs__search:focus{
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.enter-wrapper .vs__dropdown-menu li{
+  font-size: 14px  !important;
+  margin-bottom: 5px;
+}
+
+.vs__actions .vs__open-indicator{
+  fill: #1312dd;
+  cursor: pointer;
+}
+
+.enter-wrapper .vs__selected{
+  margin: 0px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #232323;
+}
 .vs-popup--content::-webkit-scrollbar {
 	-webkit-appearance: none;
 	width: 7px;
