@@ -8,6 +8,7 @@ import Profile from "./components/Profile.vue";
 import RegistrationPage from "./components/RegistrationProfile/RegistrationPage.vue";
 import ForgotPassword from "./components/RegistrationProfile/ForgotPassword.vue";
 import CreateProfile from "./components/CreateProfilePage/CreateProfile.vue";
+import BrainWarriorPage from "./components/BrainWarriorPage/BrainWarriorPage.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,7 @@ const routes = [
   { path : '/registration', component : RegistrationPage},
   { path : '/forgotpassword', component : ForgotPassword},
   { path : '/createprofile', component : CreateProfile},
+  { path : '/brainwarriorgame', component : BrainWarriorPage},
 ]
 
 const router = new VueRouter({
