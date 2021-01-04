@@ -21,7 +21,7 @@
                         <param name="movie" value="video.swf">
                     </object>
                 </video>
-                <a class="video-brain__playbtn" v-bind:class="{ active: hide }" @click="playVideo"  href="#"><img src="../../assets/video/player.svg" alt="play"></a>
+                <a class="video-brain__playbtn" v-bind:class="{ active: hide }" @click="playVideo"><img src="../../assets/video/player.svg" alt="play"></a>
             </div>
         </div>
     </div>
