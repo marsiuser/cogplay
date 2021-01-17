@@ -82,7 +82,7 @@ export default {
             margin-left: auto;
             align-items: center;
             @media screen and (max-width: 1560px){
-                max-width: 380px;
+                max-width: 290px;
             }
              @media screen and (max-width: 568px){
                  justify-content: flex-end;

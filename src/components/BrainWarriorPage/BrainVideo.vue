@@ -14,8 +14,8 @@
             </div>
             <div class="video-brain__section" @mouseover="openControlls">
                 <video  id="v-brain" @click="hidePlayBtn">
-                    <source src="../../assets/video/videobrain.mp4" type="video/mp4">
-                    <source src="../../assets/video/videobrain.mp4" type="video/webm">
+                    <source src="../../assets/video/videobrain2.mp4" type="video/mp4">
+                    <source src="../../assets/video/videobrain2.mp4" type="video/webm">
                     <source src="video.ogv" type="video/ogg">
                     <object data="video.swf" type="application/x-shockwave-flash">
                         <param name="movie" value="video.swf">
