@@ -63,7 +63,7 @@ export default {
             trueResultNumber:[],
             myResultNumber:[],
             myResult: undefined,
-            date: moment(60 * 1 * 1000),
+            date: moment(60 * 5 * 1000),
             isTimeOver: false,
             ary: undefined,
             additionNumber: 1
