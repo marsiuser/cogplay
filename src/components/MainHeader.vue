@@ -32,6 +32,7 @@
         <div class="header__note">
             <h1 class="main-note">Full body. Full brain. Fun</h1>
             <p>Increase focus optimize memory grow self-confidence</p>
+            <a href="#">free PDFs and Powerpoints</a>
         </div>
       </div>
     <div class="courses">
@@ -191,6 +192,7 @@ Vue.use(vsButton);
                 font-size: 22px;
                 line-height: 32px;
                 max-width: 474px;
+                margin-top: 20px;
                 @media screen and (max-width: 1440px){
                     font-size: 18px;
                     max-width: 374px;
@@ -200,6 +202,22 @@ Vue.use(vsButton);
                     font-size: 16px;
                     line-height: 19px;
                     max-width: 311px;
+                }
+            }
+            a{
+                margin-top: 30px;
+                display: inline-block;
+                font-size: 22px;
+                line-height: 33px;
+                color: #FFFFFF;
+                text-decoration: none;
+                padding: 12px 25px;
+                border: 3px solid #fff;
+                border-radius: 50px;
+                &:hover{
+                    background-color: #fff;
+                    color:#000;
+                    transition: 0.3s;
                 }
             }
 		}
@@ -371,6 +389,9 @@ Vue.use(vsButton);
                 &:hover{
                     background: #fff71c;
                     transition: 0.3s;
+                }
+                @media screen and (max-width: 768px){
+                    font-size: 12px;
                 }
             }
         }

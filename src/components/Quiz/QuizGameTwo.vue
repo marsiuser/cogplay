@@ -21,7 +21,7 @@
                 <div class="addition-zero__calc">
                     <div class="zero-calc">
                        <div class="zero-calc__wrap" v-bind:class="{ reverse: isReverse }">
-                            <p>{{zero}}</p>
+                            <p>{{two}}</p>
                             <div class="zero-calc__int">
                                 <span>+</span>
                                 <p id="currentNumber"></p>
@@ -74,14 +74,14 @@ import Vue from 'vue'
 import moment from 'moment'
 Vue.use(require('vue-moment'));
 export default {
-  name: 'QuizGameZero',
+  name: 'QuizGameTwo',
   components:{
       LastHeader,
       Footer
     },
     data: function(){
         return{
-            zero:0,
+            two:2,
             trueResultNumber:[],
             myResultNumber:[],
             myResult: undefined,
@@ -145,7 +145,7 @@ export default {
         allienMove:function(){
             this.isClick = true;
             let allien = document.getElementById("allien");
-               if ( this.ary.length <=1 ){
+            if ( this.ary.length <=1 ){
                 allien.classList.add("move-null");
             }
              if ( this.ary.length >= 2 &&  this.ary.length <=9 ){
@@ -194,7 +194,7 @@ export default {
         this.additionNumber++;
         this.trueResultNumber = this.randomArr;
         this.trueResultNumber = this.trueResultNumber.map(function(el){
-                return el + 0;
+                return el + 2;
         })
         // console.log(this.trueResultNumber);
         this.p = document.getElementById('currentNumber');
@@ -272,7 +272,7 @@ export default {
     .quiz-allien__tap.close{
         visibility: hidden;
         opacity: 0;
-           transition: all 0.3s;
+        transition: all 0.3s;
     }
     .quiz-allien{
         position: relative;
@@ -296,39 +296,32 @@ export default {
             left: 0%;
         }
     }
-    #allien{
+     #allien{
         transition: all 0.9s;
     }
     #allien.move-null{
-        position: absolute;
+         position: absolute;
         top: 15%;
         left: 0%;
     }
     #allien.move{
-        top: 9%;
-        left: 15%;
-        transform: scale(1.2);
+        top: 46%;
+        left: -7%;
         transition: all 0.9s;
     }
      #allien.move-normal{    
-         top: 22%;
-        left: 16%;
-        transition: all 0.9s;
-    }
-    #allien.move-well{
-        left: 65%;
-        top: 11%;
-        transform: scale(1.2);
+        left: 10%;
+        top: 48%;
     }
      #allien.move-good{
-      left: 0%;
-    top: 37%;
-    transform: scale(1.2);
+        left: 12%;
+        top: 50%;
+        transform: scale(1.2);
     }
     #allien.move-exellent{
-          left: -10%;
-          top: 46%; 
-          transform: scale(1.2);
+        left: 23%;
+        top: 28%;
+        transform: scale(1.2);
     }
     .quiz-wrap {
         background: #FFFFFF;

@@ -94,8 +94,9 @@ export default {
   font-size: 25px;
   line-height: 37px;
   color: #FF1616;
+  border-bottom: 2px solid #FF1616;
 }
-.tabs-component-tabs li:first-child a::before{
+/* .tabs-component-tabs li:first-child a::before{
   background: url(./assets/registration/line.png) no-repeat;
   content: "";
   position: absolute;
@@ -104,7 +105,7 @@ export default {
   width: 1px;
   height: 28px;
   background-size: cover;
-}
+} */
 .con-vs-popup .vs-popup{
   position: relative;
 }
@@ -274,7 +275,7 @@ body.bm-overlay .bm-cross{
 @media screen and (max-width: 1560px){
    .tabs-component-tabs .is-active a,
      .tabs-component-tabs  a{
-      font-size: 20px;
+      font-size: 18px;
     }
     .tabs-component-tabs li:first-child a::before{
       height: 23px;

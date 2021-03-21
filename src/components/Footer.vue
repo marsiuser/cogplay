@@ -84,7 +84,7 @@ export default {
         svg{
            path:hover{
                 fill: #f9ca24;
-                transition: 0.3s;
+                transition: 0.1s;
             }
         }
         .footer_navigation-item:first-child{

@@ -405,13 +405,15 @@ export default {
         }
         .registration-bg {
             width: 50%;
-             background: url(../../assets/registration/bg.png) no-repeat;
-             background-size: cover;
-             position: relative;
+            background: url(../../assets/registration/bg.png) no-repeat;
+            background-size: cover;
+            position: relative;
+            height: 100vh;
             @media screen and (max-width: 998px){
                 padding: 140px 0px;
                 width: 100%;
                 background-position: 0% 33%;
+                height: unset;
             }
             &__logo{
                 position: absolute;
@@ -491,7 +493,10 @@ export default {
         }
         .registration-section {
             width: 50%;
-            padding: 50px 0px 100px;
+            padding: 50px 0px;
+            @media screen and (max-width: 1440px){
+                padding: 25px 0px;
+            }
             @media screen and (max-width: 998px){
                 width: 100%;
             }
@@ -543,8 +548,9 @@ export default {
                     color: #130F40;
                     margin-bottom: 15px;
                      @media screen and (max-width: 1560px){
-                         font-size: 32px;
-                         line-height: 40px;
+                         font-size: 28px;
+                         line-height: 34px;
+                         margin-bottom: 10px;
                      }
                      @media screen and (max-width: 568px){
                          font-size: 30px;
@@ -552,6 +558,9 @@ export default {
                 }
                 #signUp-form{
                     margin-top: 25px;
+                    @media screen and (max-width: 1560px){
+                        margin-top: 15px;
+                    }
                 }
             }
             &__note{
@@ -580,6 +589,9 @@ export default {
                     color: #232323;
                     width: 100%;
                     font-family: 'Poppins', sans-serif;
+                    @media screen and (max-width: 1560px){
+                        padding: 6px 10px;
+                    }
                 }
                 input::placeholder { 
                     color: #232323;

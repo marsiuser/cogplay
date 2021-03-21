@@ -12,6 +12,16 @@ import BrainWarriorPage from "./components/BrainWarriorPage/BrainWarriorPage.vue
 import FingerPage from "./components/FingerGame/FingerPage.vue";
 import QuizPage from "./components/Quiz/QuizPage.vue";
 import QuizGameZero from "./components/Quiz/QuizGameZero.vue";
+import QuizGameOne from "./components/Quiz/QuizGameOne.vue";
+import QuizGameTwo from "./components/Quiz/QuizGameTwo.vue";
+import QuizGameThree from "./components/Quiz/QuizGameThree.vue";
+import QuizGameFour from "./components/Quiz/QuizGameFour.vue";
+import QuizGameFive from "./components/Quiz/QuizGameFive.vue";
+import QuizGameSix from "./components/Quiz/QuizGameSix.vue";
+import QuizGameSeven from "./components/Quiz/QuizGameSeven.vue";
+import QuizGameEight from "./components/Quiz/QuizGameEight.vue";
+import QuizGameNine from "./components/Quiz/QuizGameNine.vue";
+import QuizGameTen from "./components/Quiz/QuizGameTen.vue";
 import BrainPage from "./components/BrainWarriorPage/BrainPage.vue"
 
 Vue.use(VueRouter);
@@ -28,10 +38,21 @@ const routes = [
   { path : '/fingerskip', component : FingerPage},
   { path : '/math/addition/quiz', component : QuizPage},
   { path : '/math/addition/quiz/zerogame', component : QuizGameZero},
+  { path : '/math/addition/quiz/onegame', component : QuizGameOne},
+  { path : '/math/addition/quiz/twogame', component : QuizGameTwo},
+  { path : '/math/addition/quiz/threegame', component : QuizGameThree},
+  { path : '/math/addition/quiz/fourgame', component : QuizGameFour},
+  { path : '/math/addition/quiz/fivegame', component : QuizGameFive},
+  { path : '/math/addition/quiz/sixgame', component : QuizGameSix},
+  { path : '/math/addition/quiz/sevengame', component : QuizGameSeven},
+  { path : '/math/addition/quiz/eightgame', component : QuizGameEight},
+  { path : '/math/addition/quiz/ninegame', component : QuizGameNine},
+  { path : '/math/addition/quiz/tengame', component : QuizGameTen}
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 Vue.config.productionTip = false
 
